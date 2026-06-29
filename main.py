@@ -471,4 +471,4 @@ async def on_command_error(ctx, error):
         await ctx.send(f"Error: {getattr(error, 'original', error)}")
 
 if __name__ == "__main__":
-    bot.run(os.getnv("BOT_TOKEN"))
+    bot.run(os.getenv("BOT_TOKEN"))
