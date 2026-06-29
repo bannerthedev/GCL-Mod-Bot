@@ -18,7 +18,7 @@ INVITE_LINK = "https://discord.gg/wBavfmnQgH"  # replace with your invite
 
 PREFIX = "!"
 
--------------Files---------------
+# ---------------- FILES ----------------
 data_file = os.getenv("data_file", "/data")
 os.makedirs(data_file, exist_ok=True)
 WARN_FILE = os.path.join(data_file, "warnings.json")
