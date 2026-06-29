@@ -5,13 +5,23 @@ import re
 from datetime import datetime, timedelta
 import asyncio
 from discord import AllowedMentions
+import os
+import dotenv
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 # ---------- CONFIG ----------
-BOT_TOKEN = "MTUyMTA2NTg2NjE2MTE2MDI1Mg.GfQ1lH.OV9ySs5W2cRwg0od0YGn2FRgregqy1-WrZo6w4"
 LOG_CHANNEL_ID = 1513699221876768788  # put your mod-log channel ID here
 INVITE_LINK = "https://discord.gg/wBavfmnQgH"  # replace with your invite
 
 PREFIX = "!"
-WARN_FILE = "warnings.json"
+
+-------------Files---------------
+data_file = os.getenv("data_file", "/data")
+os.makedirs(data_file, exist_ok=True)
+WARN_FILE = os.path.join(data_file, "warnings.json")
 # ----------------------------
 
 intents = discord.Intents.default()
@@ -461,4 +471,4 @@ async def on_command_error(ctx, error):
         await ctx.send(f"Error: {getattr(error, 'original', error)}")
 
 if __name__ == "__main__":
-    bot.run(BOT_TOKEN)
+    bot.run(os.getnv("BOT_TOKEN"))
